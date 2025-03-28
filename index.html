@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeonRide - Cyberpunk Ride Hailing</title>
+    <!-- Favicon -->
+    <link rel="icon" href="https://example.com/path/to/favicon.ico" type="image/x-icon">
+    <!-- Tailwind CSS (Production) -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'neon-blue': '#00f0ff',
+                        'neon-pink': '#ff00aa',
+                        'dark-bg': '#0f0f12'
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles/main.css">
+    <style>
+        :root {
+            --neon-blue: #00f0ff;
+            --neon-pink: #ff00aa;
+            --dark-bg: #0f0f12;
+        }
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background-color: var(--dark-bg);
+            color: white;
+        }
+        h1, h2, h3 {
+            font-family: 'Orbitron', sans-serif;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <div id="app" class="flex flex-col min-h-screen">
+        <header class="bg-gray-900 border-b border-neon-blue/20">
+            <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+                <h1 class="text-2xl font-bold neon-text">
+                    <i class="fas fa-car-side mr-2"></i>NeonRide
+                </h1>
+                <button id="theme-toggle" class="btn-neon px-4 py-2">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </header>
+        <main class="flex-grow relative">
+            <!-- Map container -->
+            <div id="map" class="h-full w-full"></div>
+            
+            <!-- Floating Booking Panel -->
+            <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-11/12 max-w-md">
+                <div class="bg-gray-800/90 backdrop-blur-sm border border-neon-blue/30 rounded-xl p-4 shadow-2xl neon-panel-glow">
+                    <div class="flex items-center mb-4">
+                        <div class="w-3 h-3 rounded-full bg-neon-blue mr-2 pulse"></div>
+                        <h3 class="text-lg font-bold neon-text">BOOK NEON RIDE</h3>
+                    </div>
+                    
+                    <div class="grid grid-cols-4 gap-2 mb-4">
+                        <button class="btn-neon col-span-1">
+                            <i class="fas fa-home"></i>
+                        </button>
+                        <input type="text" placeholder="Enter destination" class="col-span-3 bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-neon-blue">
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-3">
+                        <button id="neon-ride-btn" class="btn-neon flex items-center justify-center py-3">
+                            <i class="fas fa-bolt mr-2"></i> NEON
+                        </button>
+                        <button id="boost-ride-btn" class="btn-neon flex items-center justify-center py-3">
+                            <i class="fas fa-rocket mr-2"></i> BOOST
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+        </main>
+        <footer class="bg-gray-900 border-t border-neon-blue/20 py-4">
+            <div class="container mx-auto px-4 text-center text-sm text-gray-400">
+                © 2023 NeonRide - Cyberpunk Ride Hailing
+            </div>
+        </footer>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-auth-compat.js"></script>
+    <!-- App Scripts -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/driver.js"></script>
+</body>
+</html>
